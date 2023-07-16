@@ -238,4 +238,23 @@ Array [
         ]
       `);
   });
+  it("Cannot re-export any private members", async () => {
+    const result = await tester.lintFile("src/reexport5/index.ts");
+    expect(result).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "column": 10,
+            "endColumn": 20,
+            "endLine": 1,
+            "line": 1,
+            "message": "Cannot re-export a private export 'privateVar'",
+            "messageId": "private:reexport",
+            "nodeType": "ExportSpecifier",
+            "ruleId": "import-access/jsdoc",
+            "severity": 2,
+          },
+        ]
+      `);
+  });
+
 });

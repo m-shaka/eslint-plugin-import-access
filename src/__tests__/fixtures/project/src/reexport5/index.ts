@@ -1,0 +1,1 @@
+export { privateVar } from './private';
